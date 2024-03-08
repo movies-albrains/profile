@@ -1,0 +1,28 @@
+server:
+  port: 9082
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: profile
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: profile-app
+            client-secret: 7uPubSZyVacKPiu1ee6eUDboBYaBctaO
+            authorization-grant-type: client_credentials
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:18080/realms/moviebrains
+            user-name-attribute: preferred_username
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:18080/realms/moviebrains
+  threads:
+    virtual:
+      enabled: true
+logging:
+  level:
+    org.springframework.security: DEBUG
